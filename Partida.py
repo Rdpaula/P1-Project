@@ -42,6 +42,8 @@ class Partida():
             while somalargura < LARGURA_TELA:
                 bloco+=1
                 aux = random.randint(39,80) # Intervalo de largura dos blocos
+                if somalargura + aux + 4 > LARGURA_TELA:
+                    break
 
                 if aux%7 == 0:   # Critério de atribuição de poder
                     mapa_gerado.append(Bloco(aux%5,somalargura,(30*i)+(3*(i-1)),aux,30,(aux%3)+1))
@@ -49,9 +51,8 @@ class Partida():
                     mapa_gerado.append(Bloco(aux%5,somalargura,(30*i)+(3*(i-1)),aux,30))
                 somalargura += aux + 4
 
-            somalargura = somalargura-aux+4
-            if LARGURA_TELA-somalargura-4 > 0:  # Se ainda ficou um pedaço da linha sem bloco
-                mapa_gerado.append(Bloco(aux%5,somalargura,(30*i)+3,LARGURA_TELA-somalargura-4,30))
+            somalargura += 4
+            mapa_gerado.append(Bloco(aux%5,somalargura,(30*i)+(3*(i-1)),LARGURA_TELA-somalargura-4,30))
         
         return mapa_gerado
 
