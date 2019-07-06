@@ -15,3 +15,6 @@ YELLOW = (255,215,0)
 CYAN = (0,255,255)
 
 DIRETORIO = os.getcwd()
+
+# O índice representa a vida do bloco + 1
+CORES_VIDA = [(162,255,179), (80,255,100), (152,255,0), (255,146,0), RED, (109,0,0), (65,0,0), BLACK]
