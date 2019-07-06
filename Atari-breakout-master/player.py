@@ -4,7 +4,7 @@ from constantes import *
 DIRETORIO = os.getcwd()
 
 class player(pygame.sprite.Sprite):
-    def __init__(self, sprite, pos_x, pos_y, velocidade=1):# initialing player
+    def __init__(self, sprite, pos_x, pos_y, velocidade=1):# initiating player
         super(pygame.sprite.Sprite,self).__init__()
         self.__initialposition_position = (pos_x,pos_y)
         self.image = pygame.image.load(DIRETORIO+"/images/player.png")
@@ -25,7 +25,8 @@ class player(pygame.sprite.Sprite):
         self.posicao_inicial() # Reset position
         self.vidas -= 1 # loss life
 
-    def update(self, evento):# moving the player
+    def update(self, evento):# moving the player 
+
         if evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_LEFT:
                 self.left = True
@@ -42,7 +43,8 @@ class player(pygame.sprite.Sprite):
                 self.rect.x -= self.velocidade
         self.screen.blit(self.image,(self.rect.x,self.rect.y)) 
         pygame.display.update()
-    def update2(self):
+    def update2(self): # moving the player without new event
+
         if self.right and self.rect.right < (LARGURA_TELA - self.velocidade):
                 self.rect.x += self.velocidade
         elif self.left and self.rect.left > self.velocidade:

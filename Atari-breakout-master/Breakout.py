@@ -42,7 +42,7 @@ class Breakout():
         self.run = True
         self.partida_ativa = Partida()
 
-    def clean(self, janela):
+    def clean(self, janela): # resets screen
         janela.fill(WHITE)
 
     def finalizar_jogo(self):
