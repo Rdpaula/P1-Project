@@ -30,9 +30,9 @@ class Partida():
                 self.BLOCOS_GROUP.add(bloco)
         
         jogador = player((DIRETORIO + "images/player.png"), 330, 500, 5)
-        bola = Bola(LARGURA_TELA/2-TAMANHO_BOLA, ALTURA_TELA/2-TAMANHO_BOLA)
+        self.bola = Bola(LARGURA_TELA/2-TAMANHO_BOLA, ALTURA_TELA/2-TAMANHO_BOLA)
         self.JOGADOR_GROUP.add(jogador)
-        self.BOLA_GROUP.add(bola)
+        self.BOLA_GROUP.add(self.bola)
     
     def gerador(self):
         mapa_gerado = []
@@ -64,6 +64,15 @@ class Partida():
         self.BOLA_GROUP.draw(janela)
         self.BLOCOS_GROUP.draw(janela)
         pygame.display.update() # atualiza tela
+        
+        # Colisão entre bola e bloco
+        blocos_atingidos = pygame.sprite.spritecollide(self.bola,self.BLOCOS_GROUP,False)
+        for bloco in blocos_atingidos:
+            self.bola.change_direction_y() # ***Tratar essa colisão depois***
+            bloco.vida -= 1
+            if bloco.vida == -1:
+                self.BLOCOS_GROUP.remove(bloco)
+            blocos_atingidos.remove(bloco)
     
     def update(self, janela):
         """
