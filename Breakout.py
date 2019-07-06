@@ -1,8 +1,10 @@
 # coding: utf-8
 import pygame
 from constantes import *
+from Blocos import Bloco
 from player import player
 from Partida import Partida
+from mapas import *
 
 class Breakout():
     """
@@ -17,7 +19,7 @@ class Breakout():
             Inicia partida
         """
         self.run = True
-        self.partida_ativa = Partida()
+        self.partida_ativa = Partida(0)
 
     def clean(self, janela): # resets screen
         janela.fill(WHITE)
