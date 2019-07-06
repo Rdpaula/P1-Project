@@ -8,6 +8,7 @@ class player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.__initialposition_position = (pos_x,pos_y)
         self.image = pygame.image.load(DIRETORIO+"/images/player.png")
+        self.image = pygame.transform.scale(self.image, (120, 15))
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
         self.rect.y = pos_y

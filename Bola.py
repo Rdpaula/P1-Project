@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import pygame
 import pygame.gfxdraw
 from random import choice
@@ -5,7 +7,7 @@ from constantes import *
 
 class Bola(pygame.sprite.Sprite):
 
-    def __init__(self, pos_x, pos_y, velocidade = 3):
+    def __init__(self, pos_x, pos_y, velocidade = 5):
         pygame.sprite.Sprite.__init__(self)
         self.__initialposition_position = (pos_x,pos_y)
 
@@ -21,18 +23,35 @@ class Bola(pygame.sprite.Sprite):
         self.direction_y = -1
 
     def change_direction_x(self):
+        """
+            Inverte a direção X
+        """
         self.direction_x *= -1
     
     def change_direction_y(self):
+        """
+            Inverte a direção Y
+        """
         self.direction_y *= -1
 
     def move(self):
+        """
+            Checa limites da tela e move a bola
+        """
         self.rect.y += self.direction_y * self.velocidade
         self.rect.x += self.direction_x * self.velocidade
 
-        if self.rect.y <= 0 or self.rect.y >= ALTURA_TELA - self.image.get_height():
+        if self.rect.y <= 0:
+            self.rect.y = 0
             self.change_direction_y()
-        if self.rect.x <= 0 or self.rect.x >= LARGURA_TELA - self.image.get_width():
+        elif self.rect.y >= ALTURA_TELA - self.image.get_height():
+            self.rect.y = ALTURA_TELA - self.image.get_height()
+            self.change_direction_y()
+        if self.rect.x <= 0:
+            self.rect.x = 0
+            self.change_direction_x()
+        elif self.rect.x >= LARGURA_TELA - self.image.get_width():
+            self.rect.x = LARGURA_TELA - self.image.get_width()
             self.change_direction_x()
 
     def update(self):
