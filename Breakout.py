@@ -1,35 +1,15 @@
 # coding: utf-8
-
 import pygame
 from constantes import *
-
-class Partida():
-    """
-        Classe que gerencia uma partida.
-    """
-
-    def __init__(self):
-        # Variável para checar se a partida está ativa ainda
-        self.estado = True 
-
-    def update_graphics(self, janela):
-        janela.fill(WHITE)
-
-    def update(self, janela):
-        """
-            Atualiza cada tick da partida
-        """
-        self.update_graphics(janela)
-        pygame.display.update() # atualiza tela
+from player import player
+from Partida import Partida
 
 class Breakout():
     """
         Classe principal do jogo.
     """
-
     def __init__(self):
         self.JANELA = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
-        self.CLOCK = pygame.time.Clock()
         pygame.display.set_caption("Atari Breakout")
 
     def iniciar_jogo(self):
@@ -38,6 +18,9 @@ class Breakout():
         """
         self.run = True
         self.partida_ativa = Partida()
+
+    def clean(self, janela): # resets screen
+        janela.fill(WHITE)
 
     def finalizar_jogo(self):
         """
@@ -50,25 +33,21 @@ class Breakout():
         """
             Trata eventos de entrada e do estado da partida
         """
+
         if(not self.partida_ativa.estado):
             self.finalizar_jogo()
 
-
         for event in pygame.event.get():
-            # Se o usuário clicou no X da janela
+            # Se o usuário deseja fechar o programa
             if event.type == pygame.QUIT:
                 self.run = False
                 self.menu = False
-
-            # Tecla pressionada
-            if event.type == pygame.KEYDOWN:
-                pass
-
+            
     def main(self):
         """
             Loop principal do jogo
         """
-
+        
         # Variáveis de loop para manter o jogo rodando
         self.menu = True
 
@@ -76,15 +55,13 @@ class Breakout():
             # TODO MENU
 
             self.iniciar_jogo()
-
             while self.run:
-                self.partida_ativa.update(self.JANELA)
+                self.clean(self.JANELA)
                 self.checar_eventos()
+                self.partida_ativa.update(self.JANELA)
 
 if __name__ == "__main__":
     pygame.init() # inicia módulos do pygame
-
     game = Breakout() # instancia a classe principal do jogo
     game.main()
-
     pygame.quit() # finaliza módulos pygame

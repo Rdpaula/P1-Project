@@ -1,3 +1,5 @@
+import os
+
 # TAMANHOS DA TELA
 LARGURA_TELA = 800
 ALTURA_TELA = 600
@@ -9,3 +11,5 @@ GREEN = (0,255,0)
 BLUE = (0,0,255)
 YELLOW = (255,215,0)
 CYAN = (0,255,255)
+
+DIRETORIO = os.getcwd()
