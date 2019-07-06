@@ -6,8 +6,10 @@ class Bloco(pygame.sprite.Sprite):
     def __init__(self,vida,x,y,largura,altura,poder=0):
         pygame.sprite.Sprite.__init__(self)
         
+        self.vida = vida
+        
         self.image = pygame.Surface([largura,altura])
-        self.image.fill(CORES_VIDA[vida])
+        self.image.fill(CORES_VIDA[self.vida])
 
         self.rect = self.image.get_rect()
         
