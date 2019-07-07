@@ -1,0 +1,6 @@
+linhas
+largura padrão
+altura padrão
+(espaçamento no eixo x),coeficiente_de_largura (espaçamento no eixo x),coeficiente_de_largura...
+espaçamento no eixo y
+(espaçamento no eixo x),coeficiente_de_largura (espaçamento no eixo x),coeficiente_de_largura...

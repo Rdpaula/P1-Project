@@ -26,7 +26,8 @@ class Partida():
             for bloco in mapatemporario:
                 self.BLOCOS_GROUP.add(bloco)
         else:
-            for bloco in MAPAS[mapa]:
+            mapatemporario = self.leitor(mapa)
+            for bloco in mapatemporario:
                 self.BLOCOS_GROUP.add(bloco)
         
         self.jogador = player((DIRETORIO + "images/player.png"), 330, 500, 5)
@@ -59,6 +60,33 @@ class Partida():
                 mapa_gerado.append(Bloco(aux%5,somalargura,(30*i)+(3*(i-1)),LARGURA_TELA-somalargura-4,30))
         
         return mapa_gerado
+    
+    def leitor(self,n):
+        """
+            Leitor de mapas
+        """
+        mapa_processado = []
+        mapa = open(DIRETORIO + "\mapas\mapa{}.txt".format(n))
+        linhas = int(mapa.readline())
+        l = int(mapa.readline()) # Largura padrão
+        a = int(mapa.readline()) # Altura padrão
+        ey = int(mapa.readline()) # Espaçamento no eixo y
+        for i in range(linhas):
+            ex=0 # Espaçamento no eixo x
+            linha = mapa.readline().split()
+            for bloco in linha:
+                bloco = bloco.split(',')
+                ex += int(bloco[0])
+                vida = random.randint(0,4)
+                poder = random.randint(0,20)
+                if poder == 3: # Critério de atribuição de poder
+                    poder = random.randint(1,3)
+                    mapa_processado.append(Bloco(vida,ex,ey,l*int(bloco[1]),a,poder))
+                else:
+                    mapa_processado.append(Bloco(vida,ex,ey,l*int(bloco[1]),a))
+                ex += l*int(bloco[1])
+            ey += int(mapa.readline()) + a
+        return mapa_processado
 
     def update_graphics(self, janela):
         """
