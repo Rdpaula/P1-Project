@@ -19,7 +19,7 @@ class Breakout():
             Inicia partida
         """
         self.run = True
-        self.partida_ativa = Partida(0)
+        self.partida_ativa = Partida(1)
 
     def clean(self, janela): # resets screen
         janela.fill(WHITE)

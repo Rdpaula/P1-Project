@@ -70,6 +70,7 @@ class Partida():
         linhas = int(mapa.readline())
         l = int(mapa.readline()) # Largura padrão
         a = int(mapa.readline()) # Altura padrão
+        intervalo_vida = mapa.readline().split() # Intervalo de vida
         ey = int(mapa.readline()) # Espaçamento no eixo y
         for i in range(linhas):
             ex=0 # Espaçamento no eixo x
@@ -77,7 +78,7 @@ class Partida():
             for bloco in linha:
                 bloco = bloco.split(',')
                 ex += int(bloco[0])
-                vida = random.randint(0,4)
+                vida = random.randint(int(intervalo_vida[0]),int(intervalo_vida[1]))
                 poder = random.randint(0,20)
                 if poder == 3: # Critério de atribuição de poder
                     poder = random.randint(1,3)

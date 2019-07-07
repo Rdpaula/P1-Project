@@ -1,6 +1,8 @@
 linhas
-largura padrão
-altura padrão
-(espaçamento no eixo x),coeficiente_de_largura (espaçamento no eixo x),coeficiente_de_largura...
-espaçamento no eixo y
-(espaçamento no eixo x),coeficiente_de_largura (espaçamento no eixo x),coeficiente_de_largura...
+largura padrï¿½o
+altura padrï¿½o
+intervalo de vida (int, int)
+espaï¿½amento no eixo y
+(espaï¿½amento no eixo x),coeficiente_de_largura (espaï¿½amento no eixo x),coeficiente_de_largura...
+espaï¿½amento no eixo y
+(espaï¿½amento no eixo x),coeficiente_de_largura (espaï¿½amento no eixo x),coeficiente_de_largura...
