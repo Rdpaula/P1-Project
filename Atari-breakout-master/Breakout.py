@@ -1,30 +1,10 @@
 # coding: utf-8
 import pygame
-from player import *
 from constantes import *
-import os
-DIRETORIO = os.getcwd()
-
-class Partida():
-    """
-        Classe que gerencia uma partida.
-    """
-    def __init__(self):
-        # Variável para checar se a partida está ativa ainda
-        self.estado = True 
-        self.CLOCK = pygame.time.Clock()
-        self.CLOCK.tick(60)
-
-    def update_graphics(self, janela, evento):
-        janela.fill(WHITE)
-        player.jogador.update(evento)
-    
-    def update(self, janela, evento):
-        """
-            Atualiza cada tick da partida
-        """
-        self.update_graphics(janela, evento)
-        pygame.display.update() # atualiza tela
+from Blocos import Bloco
+from player import player
+from Partida import Partida
+from mapas import *
 
 class Breakout():
     """
@@ -38,9 +18,8 @@ class Breakout():
         """
             Inicia partida
         """
-        player.jogador = player((DIRETORIO + "images/player.png"),330,500)        
         self.run = True
-        self.partida_ativa = Partida()
+        self.partida_ativa = Partida(1)
 
     def clean(self, janela): # resets screen
         janela.fill(WHITE)
@@ -61,11 +40,10 @@ class Breakout():
             self.finalizar_jogo()
 
         for event in pygame.event.get():
-            # Se o usuário clicou no X da janela
+            # Se o usuário deseja fechar o programa
             if event.type == pygame.QUIT:
                 self.run = False
                 self.menu = False
-            self.partida_ativa.update(self.JANELA,event)
             
     def main(self):
         """
@@ -80,9 +58,9 @@ class Breakout():
 
             self.iniciar_jogo()
             while self.run:
-                self.checar_eventos()
                 self.clean(self.JANELA)
-                player.jogador.update2()
+                self.checar_eventos()
+                self.partida_ativa.update(self.JANELA)
 
 if __name__ == "__main__":
     pygame.init() # inicia módulos do pygame

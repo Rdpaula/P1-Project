@@ -1,0 +1,9 @@
+linhas
+largura padrão
+altura padrão
+intervalo de vida (int, int)
+espaçamento no eixo y
+(espaçamento no eixo x),coeficiente_de_largura (espaçamento no eixo x),coeficiente_de_largura...
+espaçamento no eixo y
+(espaçamento no eixo x),coeficiente_de_largura (espaçamento no eixo x),coeficiente_de_largura...
+espaçamento no eixo y
